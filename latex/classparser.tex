@@ -1,0 +1,34 @@
+\hypertarget{classparser}{}\section{parser Class Reference}
+\label{classparser}\index{parser@{parser}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structparVectorMap}{par\+Vector\+Map} \hyperlink{classparser_a524a47c2135c4048ef7f450b0b0a5c40}{parsear} (ifstream $\ast$fich, bool v)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classparser_a524a47c2135c4048ef7f450b0b0a5c40}{}\index{parser@{parser}!parsear@{parsear}}
+\index{parsear@{parsear}!parser@{parser}}
+\subsubsection[{parsear}]{\setlength{\rightskip}{0pt plus 5cm}{\bf par\+Vector\+Map} parser\+::parsear (
+\begin{DoxyParamCaption}
+\item[{ifstream $\ast$}]{fich, }
+\item[{bool}]{verbose}
+\end{DoxyParamCaption}
+)}\label{classparser_a524a47c2135c4048ef7f450b0b0a5c40}
+El cometido de esta función es analizar sintáctica y semánticamente el programa a fin de encontrar posibles errores y evitar operaciones ilegales en la máquina. Para ello lee el fichero de entrada por lineas, las cuales a su vez subdivide en tokens que son analizados individualmente. Un buffer es empleado en ciertas situaciones de incertidumbre para uardar tokens que en el momento podrían ser tanto opcodes como etiquetas.
+
+Funciona como un dfa con la siguietne tabla de transiciones\+:
+
+$\vert$ Estado $\vert$ \mbox{[}j\+J\mbox{]}$\ast$ $\vert$ \+: $\vert$ /d $\vert$ \mbox{[}$\ast$,=\mbox{]} $\vert$ Otro caso $\vert$ Consideraciones $\vert$ $\vert$-\/-\/-\/-\/-\/---+-\/-\/-\/-\/---+-\/-\/-\/-\/---+-\/-\/-\/-\/---+-\/-\/-\/-\/---+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/---$\vert$ $\vert$ 0 $\vert$ 2 $\vert$ 3 $\vert$ Error $\vert$ Error $\vert$ Guardar en buffer, 1 $\vert$ Buff puede contener un opcode o una etiqueta de entrada $\vert$ $\vert$ 1 $\vert$ 2 $\vert$ 3 $\vert$ 0 $\vert$ 4 $\vert$ Error $\vert$ Ya hemos averiguado qué es el buffer $\vert$ $\vert$ 2 $\vert$ Error $\vert$ Error $\vert$ Error $\vert$ Error $\vert$ 0 $\vert$ El token contiene la etiqueta de salida, Fin instrucción $\vert$ $\vert$ 3 $\vert$ 2 $\vert$ Error $\vert$ Error $\vert$ Error $\vert$ 5 $\vert$ El token contiene el opcode $\vert$ $\vert$ 4 $\vert$ Error $\vert$ Error $\vert$ 0 $\vert$ Error $\vert$ Error $\vert$ Fin instrucción $\vert$ $\vert$ 5 $\vert$ Error $\vert$ Error $\vert$ 0 $\vert$ 4 $\vert$ Error $\vert$ La instrucción no puede ser de salto $\vert$
+
+Además, para cuaquier estado en caso de encontrar \textquotesingle{};\textquotesingle{} se aborta el análisis de toda la línea. Esta arquitectura permite dotar de una mayor robustez al programa al tiempo que que facilita al usuario la detección de errores mediante el uso de un debugger muy primitivo asociado a la misma. De igual forma, provee al programa de la capacidad de trabajar con instrucciones con espaciado ambiguo, p.\+e. etiqueta\+: vs etiqueta \+: ó L\+O\+A\+D =1 vs L\+O\+A\+D = 1
+
+La función devuelve un struct con un vector de instrucciones (traducidas a un lennguaje máquina interno basado en números enteros en vez de cadenas para un mejor aprovechamiento de los recursos del computador) y un map de pares etiquetas/etiquetas codificadas como enteros, en este caso, negativos. La existencia de este objeto map se justifica en una pseudo implementación de M\+M\+U capaz de detectar saltos a etiquetas sin definir
+
+En caso de que el análisis falle, el vector devuelto tendrá tamaño 0 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+parser.\+h\item 
+parser.\+cpp\end{DoxyCompactItemize}

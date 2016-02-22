@@ -164,7 +164,7 @@ string instruccionCinta::decodificacionSemantica(){
         return "Guardar en "+decodificacion()+to_string(value)+" lo que lea la cabeza de lectura";
       break;
     case WRITE :
-      return queCosa()+decodificacion()+to_string(value)+ "se envía a la cabeza de escritura";
+      return queCosa()+decodificacion()+to_string(value)+ " se envía a la cabeza de escritura";
     break;
   }
 }

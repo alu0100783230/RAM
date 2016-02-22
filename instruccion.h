@@ -33,7 +33,7 @@ enum esp{
 
 struct instruccionTemp{
     int tagSalida;
-    int opcode;
+    int opcode = -1;
     int operando;
     int especial;
 };

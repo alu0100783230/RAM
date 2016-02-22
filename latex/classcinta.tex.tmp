@@ -1,0 +1,42 @@
+\hypertarget{classcinta}{}\section{cinta Class Reference}
+\label{classcinta}\index{cinta@{cinta}}
+
+
+Inheritance diagram for cinta\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classcinta_a18478ad7784e2dbfcdd016bfba9c797c}{}{\bfseries cinta} (ifstream $\ast$fich)\label{classcinta_a18478ad7784e2dbfcdd016bfba9c797c}
+
+\item 
+\hypertarget{classcinta_ade676ede0286bee54c9fc36a1c04b588}{}virtual int {\bfseries op\+Cinta} (int p=0)=0\label{classcinta_ade676ede0286bee54c9fc36a1c04b588}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classcinta_a517a67e5e09a5f95af778c4e3e1692ba}{}virtual void {\bfseries move\+Head} ()\label{classcinta_a517a67e5e09a5f95af778c4e3e1692ba}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classcinta_a0583cb0cd4832a552e87d2accd2b4336}{}int {\bfseries index\+Head}\label{classcinta_a0583cb0cd4832a552e87d2accd2b4336}
+
+\item 
+\hypertarget{classcinta_ab08a6a13cdfddc9b79d2cbfe1e5ca661}{}vector$<$ int $>$ {\bfseries tape}\label{classcinta_ab08a6a13cdfddc9b79d2cbfe1e5ca661}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classcinta_a80083c2405813995edf358b81d1c4fef}{}ostream \& {\bfseries operator$<$$<$} (ostream \&os, const \hyperlink{classcinta}{cinta} \&tape)\label{classcinta_a80083c2405813995edf358b81d1c4fef}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+cinta.\+h\item 
+cinta.\+cpp\end{DoxyCompactItemize}

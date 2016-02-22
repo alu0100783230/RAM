@@ -1,25 +1,22 @@
-  READ  1  		;no podemos leer la cinta de entrada y guardarlo directo al acumulador
-	STORE 1
-	JGTZ else
-	WRITE = 0
-        HALT                    ;jump fin
-
-else:
-        LOAD  1			;recargamos por si acaso
-        STORE 2			;guardamos como n
-        LOAD  1			;ESTO SOBRA
-        SUB = 1			;n = n - 1
-        STORE 3			;guardamos n-1 como variable cont
-while:  LOAD  3
-	      JGTZA bucle
-	      JUMP  finwhile
-bucle:
-        LOAD  2			;cargar n
-        ADD   1			;a R0 le sumamos lo que esté en R1 (n original)
-        STORE 2			;guardamos en R2
-        LOAD  3			;cargar R3 (cont)
-        SUB = 1			;con = cont - 1
-        STORE 3			;guardar cont
-	JUMP  while
-finwhile:
-	WRITE 2
+  READ 1
+  LOAD 1
+  JGTZ else
+  WRITE =0
+  JUMP fin
+else : LOAD 1
+  STORE 2
+  LOAD 1
+  SUB =1
+  STORE 3
+cond : LOAD 3
+  JGTZ bucle
+  JUMP fin_bucle
+bucle : LOAD 2
+  MUL 1
+  STORE 2
+  LOAD 3
+  SUB =1
+  STORE 3
+  JUMP cond
+fin_bucle : WRITE 2
+fin: HALT

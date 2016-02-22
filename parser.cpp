@@ -25,7 +25,7 @@ parser::parser()  {}
  * Esta arquitectura permite dotar de una mayor robustez al programa al tiempo que
  * que facilita al usuario la detección de errores mediante el uso de un debugger
  * muy primitivo asociado a la misma. De igual forma, provee al programa de la capacidad
- * de trabajar con instrucciones con espaciado ambiguo, p.e. etiqueta: vs etiqueta : ó LOAD =1 vs LOAD = 1
+ * de trabajar con instrucciones con cierto espaciado ambiguo, p.e.  LOAD =1 vs LOAD = 1 ó etiqueta: vs etiqueta :
  *
  * La función devuelve un struct con un vector de instrucciones (traducidas a un lennguaje máquina
  * interno basado en números enteros en vez de cadenas para un mejor aprovechamiento de los recursos
@@ -49,7 +49,7 @@ parVectorMap parser::parsear(ifstream* fich, bool verbose){
   regex coments ("(;)(.*)");
   regex igual("^(.*)(=)(.*)$");
   regex estrella("(\'*')");
-  regex tag("^(:)$");
+  regex tag("^(.*)(:)$");
   regex salto("^[jJ](.*)");
   regex digito("^(.*)[[:digit:]]+");
   regex halt("(halt)|(HALT)");
@@ -120,6 +120,13 @@ parVectorMap parser::parsear(ifstream* fich, bool verbose){
             if(verbose){cout<<"Ahora espero un opcode, '"<<buff<<"' era la etiqueta de entrada "<<traducirEtiqueta(buff);}
             estado=3;
             palabraReservada = true;
+          }else if(estado==0){
+            //lo siguiente será un opcode
+            string aux = token.substr(0, token.size()-1);
+            etiqueta_indice.insert(pair<short,int>(traducirEtiqueta(aux),(vectorInstrucciones.size())));
+            if(verbose){cout<<"Ahora espero un opcode, '"<<aux<<"' es la etiqueta de entrada "<<traducirEtiqueta(buff);}
+            estado=3;
+            palabraReservada = true;
           }else
             errorOut(token);
         }
@@ -157,7 +164,7 @@ parVectorMap parser::parsear(ifstream* fich, bool verbose){
       }
     }
     //construir instrucción
-    if(!comentario)
+    if(!comentario || tmpIns.opcode>-1)
       vectorInstrucciones.push_back(crearInstruccion(tmpIns));
     comentario=false;
   }

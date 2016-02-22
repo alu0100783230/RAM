@@ -46,11 +46,10 @@ void RAM::mostrar(){
     printf("%2d|",bancoReg[i]);
   }
   //Direcciones virtuales
-  cout<<endl"MMU: "<<endl;
+  cout<<"\n\nMMU: "<<endl;
   for(int i = 0; i<etiqueta_indice.size();i++){
     cout<<-1-i<<"/"<<etiqueta_indice[-i-1]<<", ";
   }
-  cout<<endl;
   // Bloque para extraer una sección del programa de un máximo de 10 líneas e imprimirla
   int min = programCounter-5, max = programCounter+5;
   for(int i=0;i<5;i++){
