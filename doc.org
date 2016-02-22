@@ -1,0 +1,9 @@
+
+| Estado | [jJ]* | :     | /d    | [*,=] | Otro caso                          | Consideraciones                                          |
+|--------+-------+-------+-------+-------+------------------------------------+----------------------------------------------------------|
+|      0 |     2 | 3     | Error | Error | Guardar en buffer, pasa a estado 1 | Buff puede contener un opcode o una etiqueta de entrada  |
+|      1 |     2 | 3     | 0     | 4     | Error                              | Ya hemos averiguado qué es el buffer                     |
+|      2 | Error | Error | Error | Error | Pasa a estado 0                    | El token contiene la etiqueta de salida, Fin instrucción |
+|      3 |     2 | Error | Error | Error | Pasa al estado 5                   | El token contiene el opcode                              |
+|      4 | Error | Error | 0     | Error | Error                              | Fin instrucción                                          |
+|      5 |     2 | Error | 0     | 4     | Error                              |                                                          |
