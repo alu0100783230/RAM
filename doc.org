@@ -1,3 +1,59 @@
+* asdasdasdasdasdasd
+
+** asdasdasd
+
+
+#+BEGIN_SRC 
+int main(void){
+cout<<"turbo ñame"<<endl;
+}
+#+END_SRC
+sdf
+
+
+
+
+
+sdf
+
+
+
+
+
+
+
+
+
+sf
+
+
+
+
+
+
+
+
+sdf
+
+
+
+
+
+
+
+df
+
+
+
+sdf
+
+
+
+
+sdf
+
+   
+
 
 | Estado | [jJ]* | :     | /d    | [*,=] | Otro caso                          | Consideraciones                                          |
 |--------+-------+-------+-------+-------+------------------------------------+----------------------------------------------------------|
@@ -7,3 +63,10 @@
 |      3 |     2 | Error | Error | Error | Pasa al estado 5                   | El token contiene el opcode                              |
 |      4 | Error | Error | 0     | Error | Error                              | Fin instrucción                                          |
 |      5 |     2 | Error | 0     | 4     | Error                              |                                                          |
+
+
+
+dasñśaññdada asdllañks ñl
+
+asdasd
+

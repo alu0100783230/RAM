@@ -38,12 +38,12 @@ void RAM::mostrar(){
         "REGS: "<<endl;
   printf("%10s|",&"Acumulador");
   for(int i=0;i<31;i++){
-    printf("%2d|",i+1);
+    printf("%3d|",i+1);
   }
   cout<<endl;
   printf("%10d|",acumulador);
   for(int i=0;i<31;i++){
-    printf("%2d|",bancoReg[i]);
+    printf("%3d|",bancoReg[i]);
   }
   //Direcciones virtuales
   cout<<"\n\nMMU: "<<endl;

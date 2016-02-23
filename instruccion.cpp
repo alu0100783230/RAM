@@ -130,16 +130,16 @@ string instruccion::queCosa(){
 string instruccionAlu::decodificacionSemantica(){
   switch (opcode) {
     case ADD :
-      return "Leer Acumulador, sumarle "+queCosa()+decodificacion()+to_string(value)+"y guardar en el Acumulador";
+      return "Leer Acumulador, sumarle "+queCosa()+decodificacion()+to_string(value)+" y guardar en el Acumulador";
     break;
     case SUB :
-      return "Leer Acumulador, restarle "+queCosa()+decodificacion()+to_string(value)+"y guardar en el Acumulador";
+      return "Leer Acumulador, restarle "+queCosa()+decodificacion()+to_string(value)+" y guardar en el Acumulador";
     break;
     case MUL :
-      return "Leer Acumulador, multiplicarlo por "+queCosa()+decodificacion()+to_string(value)+"y guardar en el Acumulador";
+      return "Leer Acumulador, multiplicarlo por "+queCosa()+decodificacion()+to_string(value)+" y guardar en el Acumulador";
     break;
     case DIV :
-      return "Leer Acumulador, dividirlo por "+queCosa()+decodificacion()+to_string(value)+"y guardar en el Acumulador";
+      return "Leer Acumulador, dividirlo por "+queCosa()+decodificacion()+to_string(value)+" y guardar en el Acumulador";
     break;
   }
 }

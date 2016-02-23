@@ -164,7 +164,8 @@ parVectorMap parser::parsear(ifstream* fich, bool verbose){
       }
     }
     //construir instrucción
-    if(!comentario || tmpIns.opcode>-1)
+    //cout<<tmpIns.opcode<<endl;
+    if(tmpIns.opcode>-1)          //!comentario
       vectorInstrucciones.push_back(crearInstruccion(tmpIns));
     comentario=false;
   }
