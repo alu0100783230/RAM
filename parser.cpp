@@ -7,7 +7,7 @@ parser::parser()  {}
  * el programa a fin de encontrar posibles errores y evitar operaciones
  * ilegales en la máquina. Para ello lee el fichero de entrada por lineas, las
  * cuales a su vez subdivide en tokens que son analizados individualmente.
- * Un buffer es empleado en ciertas situaciones de incertidumbre para uardar
+ * Un buffer es empleado en ciertas situaciones de incertidumbre para guardar
  * tokens que en el momento podrían ser tanto opcodes como etiquetas.
  *
  * Funciona como un dfa con la siguietne tabla de transiciones:
@@ -48,7 +48,7 @@ parVectorMap parser::parsear(ifstream* fich, bool verbose){
   //Inicialización de las expresiones regulares implicadas
   regex coments ("(;)(.*)");
   regex igual("^(.*)(=)(.*)$");
-  regex estrella("(\'*')");
+  regex estrella("^(.*)(\\*)(.*)$");
   regex tag("^(.*)(:)$");
   regex salto("^[jJ](.*)");
   regex digito("^(.*)[[:digit:]]+");

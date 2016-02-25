@@ -29,7 +29,6 @@ bool RAM::run(bool traza){
   system("clear");
 }
 
-
 // Muestra la máquina formateada
 void RAM::mostrar(){
   char c;

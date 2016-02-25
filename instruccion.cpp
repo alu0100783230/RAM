@@ -121,8 +121,9 @@ string instruccion::decodificacion(){
 }
 
 string instruccion::queCosa(){
+      cout<<especial<<endl;
   if(especial == NADA || especial == IGUAL)
-    return " ";
+    return "";
   else
     return "lo que haya en ";
 }
