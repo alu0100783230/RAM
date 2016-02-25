@@ -64,7 +64,7 @@ parVectorMap parser::parsear(ifstream* fich, bool verbose){
     tmpIns=instruccionTemp();
     while(flujo>>token){
       bool palabraReservada = false;
-      if(verbose){cout<<endl<<"'"<<token<<"' -> ";}
+      if(verbose){cout<<endl<<token<<"\t";}
       if(regex_match(token,coments)){
           //si encontramos ';' saltar a la siguiente línea
           if(verbose){cout<<"Comentario, saltando línea";}
@@ -99,14 +99,14 @@ parVectorMap parser::parsear(ifstream* fich, bool verbose){
           if(estado==1){
             //Fin de instrucción simple
             tmpIns.operando=atoi(token.c_str());
-            if(verbose){cout<<"Instrucción simple, '"<<buff<<"' fue el opcode "<<traducirOpcode(buff);}
+            if(verbose){cout<<"Instrucción simple, '"<<buff<<"' fue el opcode "<<traducirOpcode(buff)<<endl;}
             tmpIns.opcode = traducirOpcode(buff);
             estado=0;
             palabraReservada = true;
           }else if(estado==5 || estado==4){
             //Fin de instrucción compuesta
             tmpIns.operando=atoi(token.c_str());
-            if(verbose){cout<<" de valor "<<atoi(token.c_str())<<", '"<<buff<<"' fue el opcode "<<traducirOpcode(buff);}
+            if(verbose){cout<<" de valor "<<atoi(token.c_str())<<", '"<<buff<<"' fue el opcode "<<traducirOpcode(buff)<<endl;}
             tmpIns.opcode = traducirOpcode(buff);
             estado=0;
             palabraReservada = true;
@@ -164,7 +164,6 @@ parVectorMap parser::parsear(ifstream* fich, bool verbose){
       }
     }
     //construir instrucción
-    //cout<<tmpIns.opcode<<endl;
     if(tmpIns.opcode>-1)          //!comentario
       vectorInstrucciones.push_back(crearInstruccion(tmpIns));
     comentario=false;
@@ -174,6 +173,7 @@ parVectorMap parser::parsear(ifstream* fich, bool verbose){
     cout<<"[!] Error, existen saltos a etiquetas sin definir"<<endl;
     errores++;
   }
+  cout<<endl<<endl;
   if(errores==0)
     resultado  = {etiqueta_indice,vectorInstrucciones};
   else
