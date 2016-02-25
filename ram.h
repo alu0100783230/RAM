@@ -27,7 +27,7 @@ private:
   vector<int> bancoReg;
   int acumulador;
   map<short,int> etiqueta_indice;                       //similar a una MMU
-  int programCounter;
+  unsigned programCounter;
   bool halt;
   bool salto;
 public:
@@ -36,11 +36,26 @@ public:
   void mostrar();
   inline const void write(int v){ tapeOut->opCinta(v); }
   inline const int read(){ return tapeIn->opCinta(); }
-  inline const int getReg(int i){ return bancoReg[i-1]; }
+  inline int getReg(int i){
+    if(i>0 && i<32){
+      return bancoReg[i-1];
+    }else{
+      cout<<"Excepción, intento de acceso fuera de la memoria. Reg ["<<i<<"]"<<endl;
+      halt = true;
+    }
+  }
   inline void setReg(int i, int v){ bancoReg[i-1] = v; }
   inline const int getAc(){ return acumulador;}
   inline int setAc(int v){ acumulador = v;}
-  inline void setPC(int v){ programCounter = etiqueta_indice.find(v)->second; salto = true;}
+  void setPC(int v){
+    if (etiqueta_indice.find(v)!=etiqueta_indice.end()) {
+      programCounter = etiqueta_indice.find(v)->second;
+      salto = true;
+    }else{
+      cout<<"Excepción, se ha producido un salto inválido"<<endl;
+      halt = true;
+    }
+  }
   inline void setHalt(){ halt = true; }
 };
 

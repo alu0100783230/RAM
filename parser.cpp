@@ -29,7 +29,7 @@ parser::parser()  {}
  *
  * La función devuelve un struct con un vector de instrucciones (traducidas a un lennguaje máquina
  * interno basado en números enteros en vez de cadenas para un mejor aprovechamiento de los recursos
- * del computador) y un map de pares etiquetas/etiquetas codificadas como enteros, en este caso, negativos.
+ * del computador) y un map de pares etiquetas/etiquetas codificadas como enteros, en este caso, negativos.f
  * La existencia de este objeto map se justifica en una pseudo implementación de MMU
  * capaz de detectar saltos a etiquetas sin definir
  *

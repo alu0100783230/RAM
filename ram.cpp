@@ -36,7 +36,7 @@ void RAM::mostrar(){
   cout<<"Cinta de entrada : "<<*tapeIn<<"\n"
         "Cinta de salida  : "<<*tapeOut<<"\n\n"
         "REGS: "<<endl;
-  printf("%10s|",&"Acumulador");
+  printf("%10s|","Acumulador");
   for(int i=0;i<31;i++){
     printf("%3d|",i+1);
   }
@@ -47,11 +47,11 @@ void RAM::mostrar(){
   }
   //Direcciones virtuales
   cout<<"\n\nMMU: "<<endl;
-  for(int i = 0; i<etiqueta_indice.size();i++){
+  for(unsigned i = 0; i<etiqueta_indice.size();i++){
     cout<<-1-i<<"/"<<etiqueta_indice[-i-1]<<", ";
   }
   // Bloque para extraer una sección del programa de un máximo de 10 líneas e imprimirla
-  int min = programCounter-5, max = programCounter+5;
+  unsigned min = programCounter-5, max = programCounter+5;
   for(int i=0;i<5;i++){
     if(min<0){
       min++;
@@ -69,7 +69,7 @@ void RAM::mostrar(){
     cout<<"\t\t. . ^ . ."<<endl;
   else
     cout<<"\t\t_________"<<endl;
-  for(int i = min; i<=max; i++){
+  for(unsigned i = min; i<=max; i++){
     if(i==programCounter)
       cout<<"\t["<<i<<"]\t"<<*program[i]<<endl;
     else
