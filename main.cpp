@@ -66,13 +66,14 @@ int main(int argc, char *argv[]){
     if(VM.vectorInstrucciones.size()>0){
       cout<<endl<<"La máquina ha sido creada correctamente"<<endl;
       char c;
-      while(select!=4){
+      while(select!=5){
         select=-9;
-        while((select<1 || select>3) && select!=4){
+        while((select<1 || select>4) && select!=5){
           cout<<"[1] Ver estado\n"
                 "[2] Ejecutar\n"
                 "[3] Ejecutar modo paso a paso\n"
-                "[4] Salir"<<endl;
+                "[4] Reiniciar máquina\n"
+                "[5] Salir"<<endl;
           cin>>select;
         }
         switch (select) {
@@ -88,6 +89,10 @@ int main(int argc, char *argv[]){
           case 3:
             system("clear");
             maquina.run(true);
+          break;
+          case 4:
+            system("clear");
+            maquina.reset();
           break;
         }
         ofstream fichout(ficheros[1].c_str());

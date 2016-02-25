@@ -11,6 +11,8 @@
 
 using namespace std;
 
+#define REG_SIZE 32
+
 class instruccion;
 class program;
 
@@ -37,9 +39,9 @@ public:
   inline const void write(int v){ tapeOut->opCinta(v); }
   inline const int read(){ return tapeIn->opCinta(); }
   inline int getReg(int i){
-    if(i>0 && i<32){
+    if(i > 0 && i < REG_SIZE +1 ){
       return bancoReg[i-1];
-    }else{
+    } else {
       cout<<"Excepción, intento de acceso fuera de la memoria. Reg ["<<i<<"]"<<endl;
       halt = true;
     }
@@ -57,6 +59,7 @@ public:
     }
   }
   inline void setHalt(){ halt = true; }
+  void reset();
 };
 
 #endif // RAM_H

@@ -9,7 +9,7 @@ RAM::RAM(cintaIn* cintain, cintaOut* cintaout, parVectorMap par):
   tapeOut(cintaout),
   acumulador(0),
   salto(false),
-  bancoReg(31)
+  bancoReg(REG_SIZE)
   {}
 
 bool RAM::run(bool traza){
@@ -37,21 +37,21 @@ void RAM::mostrar(){
         "Cinta de salida  : "<<*tapeOut<<"\n\n"
         "REGS: "<<endl;
   printf("%10s|","Acumulador");
-  for(int i=0;i<31;i++){
+  for(int i=0;i<REG_SIZE;i++){
     printf("%3d|",i+1);
   }
   cout<<endl;
   printf("%10d|",acumulador);
-  for(int i=0;i<31;i++){
+  for(int i=0;i<REG_SIZE;i++){
     printf("%3d|",bancoReg[i]);
   }
   //Direcciones virtuales
   cout<<"\n\nMMU: "<<endl;
-  for(unsigned i = 0; i<etiqueta_indice.size();i++){
+  for(int i = 0; i<etiqueta_indice.size();i++){
     cout<<-1-i<<"/"<<etiqueta_indice[-i-1]<<", ";
   }
   // Bloque para extraer una sección del programa de un máximo de 10 líneas e imprimirla
-  unsigned min = programCounter-5, max = programCounter+5;
+  int min = programCounter-5, max = programCounter+5;
   for(int i=0;i<5;i++){
     if(min<0){
       min++;
@@ -82,4 +82,15 @@ void RAM::mostrar(){
   cout<<"\n\nDECODIFICACIÓN SEMÁNTICA:\n\n"<<program[programCounter]->decodificacionSemantica()<<endl;
   scanf("%c",&c);
   system("clear");
+}
+
+void RAM::reset(){
+  cout<<"Reset"<<endl;
+  for(unsigned i = 1; i < REG_SIZE + 1; i++){
+    setReg(i,0);
+  }
+  halt = false;
+  salto = false;
+  programCounter = 0;
+  setAc(0);
 }
