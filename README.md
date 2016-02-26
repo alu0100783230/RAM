@@ -1,14 +1,37 @@
-# RAM
+# Máquina RAM
+
+Máquina de propósito general con juego de instrucciones reducido.
+
+Implementa de forma adicional:
+- **Compilador** de instrucciones en ensamblador a código máquina.  
+La máquina virtual internamente trabaja con un lenguaje basado en
+números enteros para un mayor rendimiento
+
+  - *Modo verbose*
+  - *Debugger*      
+
+
+- Pseudo **MMU** para verificar los saltos
+- Modo de ejcución paso a paso, muestra
+
+  - *Registros*
+  - *Cinta de entrada / salida*
+  - *Instrucciones*
+  - *Decodificación semántica de la instrucción*
+
+
+![Modo paso a paso](Pics/RAM1.png)
+
 **Compilar**
 
 ```terminal
-> make
+make
 ```
 
 **Ejecutar**
 
 ```terminal
-> ./Ram fichero_cinta_entrada  fichero_cinta_salida  fichero_programa
+./Ram fichero_cinta_entrada  fichero_cinta_salida  fichero_programa
 ```
 
 ## Instrucciones
@@ -47,14 +70,17 @@
 - **ADD**
 
   ```
-        ADD = 1 → leo R0, le sumo 1 y lo devuelvo a R0
-        ADD 1   → leo R0, le sumo el contenido de R1 y lo devuelvo a R0
-        ADD *1  → leo R0, le sumo el contenido de lo apuntado por R1 y lo devuelvo a R0
+  ADD = 1 → leo R0, le sumo 1 y lo devuelvo a R0
+  ADD 1   → leo R0, le sumo el contenido de R1 y lo devuelvo a R0
+  ADD *1  → leo R0, le sumo el contenido de lo apuntado por R1 y lo devuelvo a R0
   ```
 
-- **SUB**, Ídem que el anterior  
-- **MUL**, Ídem que el anterior  
+- **SUB**, Ídem que el anterior
+
+- **MUL**, Ídem que el anterior
+
 - **DIV**, Ídem que el anterior  
+
 - **JUMP**, _etiq_
 
   ```
@@ -74,3 +100,28 @@
   ```
 
 - **HALT**, _control_
+
+- **Comentarios**
+
+  ```
+  ADD = 1 ;esto es un comentario
+  ```
+
+## Sintaxis
+
+De forma general conviene dejar un espacio entre cada elemento, sin embargo, el compilador
+tratará de adaptarse en caso de que no existan.
+
+**Etiquetas:**
+- Tras una instrucción de salto (invocación del salto):  
+
+`JUMP etiqueta1`
+
+- Previas a cualquier una instrucción (destino al que se salta)
+
+`etiqeta : INSTRUCCIÓN` ó `etiqueta: INSTRUCCIÓN`
+
+**Instrucciones complejas** (__*__,**=**)
+`ADD =1` ó `ADD = 1`
+
+`WRITE =1` ó `WRITE = 1`

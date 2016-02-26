@@ -2,9 +2,6 @@
 ; que encuentre un 0 y copia los valores leídos a la cinta
 ; de salida (el valor 0 no se copia)
 
-
-
-
 	lee	:	read 1
 			load 1
 			jzero fin
