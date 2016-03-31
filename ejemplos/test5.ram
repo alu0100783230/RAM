@@ -1,8 +1,8 @@
-; Programa que lee los elementos la cinta de entrada hasta
-; que encuentre un 0 y escribe la suma de todos los elementos 
-; leídos a la cinta de salida
+; que encuentre un 0 y escribe la suma de todos los elementos
+k Programa que lee los elementos la cinta de entrada hasta
+; leï¿½dos a la cinta de salida
 			READ 1
-                        LOAD =0
+      LOAD =0
 			STORE 2
 	bucle	:       LOAD 1
 			JZERO fin

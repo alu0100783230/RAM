@@ -22,18 +22,19 @@ números enteros para un mayor rendimiento
 
 ![Modo paso a paso](Pics/RAM1.png)
 
-**Compilar**
+---
+## Compilar
 
 ```terminal
 make
 ```
 
-**Ejecutar**
+## Ejecutar
 
 ```terminal
 ./Ram fichero_cinta_entrada  fichero_cinta_salida  fichero_programa
 ```
-
+---
 ## Instrucciones
 - **LOAD** cargar en R0 un valor  
 
@@ -106,7 +107,7 @@ make
   ```
   ADD = 1 ;esto es un comentario
   ```
-
+---
 ## Sintaxis
 
 De forma general conviene dejar un espacio entre cada elemento, sin embargo, el compilador
@@ -122,6 +123,7 @@ tratará de adaptarse en caso de que no existan.
 `etiqeta : INSTRUCCIÓN` ó `etiqueta: INSTRUCCIÓN`
 
 **Instrucciones complejas** (__*__,**=**)
+
 `ADD =1` ó `ADD = 1`
 
 `WRITE =1` ó `WRITE = 1`
